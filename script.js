@@ -177,7 +177,7 @@
 document.getElementById('bookingForm').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const phoneNumber = "201000000000"; // اكتب رقمك هنا
+  const phoneNumber = "201140286051"; // اكتب رقمك هنا
 
   const name = document.getElementById('name').value;
   const phone = document.getElementById('phone').value;
