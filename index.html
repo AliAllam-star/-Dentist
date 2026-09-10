@@ -1,0 +1,1278 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <script>
+      window.__V0_SANDBOX_ID__ = "sb-l7wjgui9maae";
+      window.__V0_CHAT_ID__ = "nL1WwzCA9rB";
+      (function _v() {
+        try {
+          if (
+            !/\bFirefox\//.test(navigator.userAgent) ||
+            "u" < typeof PerformanceNavigationTiming
+          )
+            return;
+          let e = Object.getOwnPropertyDescriptor(
+            PerformanceResourceTiming.prototype,
+            "transferSize",
+          );
+          if (!e || !e.get) return;
+          let t = e.get;
+          Object.defineProperty(
+            PerformanceNavigationTiming.prototype,
+            "transferSize",
+            {
+              configurable: !0,
+              get() {
+                let e = t.call(this);
+                if (0 !== e || "back_forward" === this.type) return e;
+                let r = window.next,
+                  n = r && "string" == typeof r.version ? r.version : "",
+                  i = /^16\.2\.(\d+)/.exec(n);
+                return i && Number(i[1]) >= 7 ? 1 : e;
+              },
+            },
+          );
+        } catch {}
+      })();
+      window.__V0_SOURCE_MAP_FRAME_ROOT__ =
+        "file:///vercel/share/v0-project/.next/dev/static";
+      (function _y(e) {
+        let t = Symbol.for("__next_dev_bridge_runtime_observer__"),
+          r = window[t],
+          n = e || {},
+          i = n.messageType || "next-dev-bridge:runtime",
+          a = n.readyMessageType || "next-dev-bridge:runtime-ready",
+          o = n.resetMessageType || "next-dev-bridge:runtime-reset",
+          s = n.targetOrigin || "*",
+          l = !1 !== n.isAppDirectory,
+          c =
+            "string" == typeof n.sourceMapEndpoint && n.sourceMapEndpoint
+              ? n.sourceMapEndpoint
+              : "",
+          u =
+            "string" == typeof n.sourceMapFrameRoot && n.sourceMapFrameRoot
+              ? n.sourceMapFrameRoot.replace(/\/+$/, "")
+              : "";
+        if (r)
+          return void f(a, {
+            existing: !0,
+            href: window.location.href,
+            windowId: r.windowId,
+          });
+        let d = 1,
+          p = `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+          h = { errors: [] };
+        function f(e, t) {
+          window.parent !== window &&
+            window.parent.postMessage({ type: e, ...t }, s);
+        }
+        async function m(e) {
+          let t = {
+            ...e,
+            id: d++,
+            severity: "recoverable",
+            at: new Date().toISOString(),
+          };
+          ((h.errors = [...h.errors, t]),
+            f(i, {
+              event: { type: "runtime:error", error: t, errors: h.errors },
+              state: h,
+              href: window.location.href,
+              windowId: p,
+            }),
+            c &&
+              _(t)
+                .then((e) => {
+                  h.errors.some((e) => e.id === t.id) &&
+                    ((t.mapped = e),
+                    (h.errors = h.errors.map((e) => (e.id === t.id ? t : e))),
+                    f(i, {
+                      event: {
+                        type: "runtime:error",
+                        error: t,
+                        errors: h.errors,
+                      },
+                      state: h,
+                      href: window.location.href,
+                      windowId: p,
+                    }));
+                })
+                .catch(() => {}));
+        }
+        function g() {
+          0 !== h.errors.length &&
+            ((h.errors = []),
+            f(i, {
+              event: { type: "runtime:cleared", errors: [] },
+              state: h,
+              href: window.location.href,
+              windowId: p,
+            }));
+        }
+        function y(e) {
+          var t, r, n, i, a;
+          let o, s, l, c;
+          m(
+            ((o = w((t = e).error, t.message || "Uncaught error")),
+            (s = t.filename || void 0),
+            (l = D(t.lineno)),
+            (c = D(t.colno)),
+            {
+              source: "error",
+              name: o.name,
+              message: o.message,
+              stack:
+                o.stack ||
+                ((r = o.message),
+                (n = s),
+                (i = l),
+                (a = c),
+                n && i && a
+                  ? `${r}
+    at <anonymous> (${n}:${i}:${a})`
+                  : ""),
+              filename: s,
+              line: l,
+              column: c,
+            }),
+          );
+        }
+        function v(e) {
+          let t;
+          m({
+            source: "unhandledrejection",
+            name: (t = w(e.reason, "Unhandled promise rejection")).name,
+            message: t.message,
+            stack: t.stack,
+          });
+        }
+        function b(e) {
+          let t = e.data;
+          t && "object" == typeof t && t.type === o && g();
+        }
+        function w(e, t) {
+          return e instanceof Error
+            ? {
+                name: e.name || "Error",
+                message: e.message || t,
+                stack: e.stack || "",
+              }
+            : e && "object" == typeof e
+              ? {
+                  name: "string" == typeof e.name ? e.name : "Error",
+                  message:
+                    "string" == typeof e.message
+                      ? e.message
+                      : (function (e) {
+                          try {
+                            return JSON.stringify(e);
+                          } catch {
+                            return "";
+                          }
+                        })(e) || t,
+                  stack: "string" == typeof e.stack ? e.stack : "",
+                }
+              : {
+                  name: "Error",
+                  message: "string" == typeof e ? e : null == e ? t : String(e),
+                  stack: "",
+                };
+        }
+        async function _(e) {
+          var t, r;
+          let n =
+            ((t = String(e.stack).split("\n").map(j).filter(Boolean)),
+            (r = e.filename),
+            t.map((e) => ({
+              ...e,
+              file: (function (e, t) {
+                var r, n;
+                if ("string" != typeof e || 0 === e.length) return;
+                let i = C(e);
+                if (i) return I(i);
+                if (((r = e), /^[a-zA-Z][a-zA-Z\d+.-]*:/.test(r))) return e;
+                if (t && N(t) === N(e)) {
+                  let e = C(t);
+                  return e ? I(e) : t;
+                }
+                let a = e.startsWith("_next/") ? `/${e}` : e;
+                return a.startsWith("/_next/")
+                  ? I(a)
+                  : !(n = a).includes("/") &&
+                      n.endsWith(".js") &&
+                      (n.startsWith("_") ||
+                        n.includes("._.") ||
+                        n.startsWith("node_modules_") ||
+                        n.startsWith("turbopack-"))
+                    ? I(`/_next/static/chunks/${a}`)
+                    : e;
+              })(e.file, r),
+            })));
+          return {
+            message: e.message,
+            stack: e.stack,
+            frames: n,
+            mappedFrames: n.length > 0 ? await x(n) : [],
+          };
+        }
+        async function x(e) {
+          let t = (function (e) {
+              let t = [],
+                r = new Set();
+              for (let n of ($(t, r, e), [O, A, P])) {
+                let i = (function (e, t) {
+                  let r = !1,
+                    n = e.map((e) => {
+                      if ("string" != typeof e.file) return e;
+                      let n = t(e.file);
+                      return n && n !== e.file
+                        ? ((r = !0), { ...e, file: n })
+                        : e;
+                    });
+                  return r ? n : null;
+                })(e, n);
+                i && $(t, r, i);
+              }
+              return t;
+            })(e),
+            r = null;
+          for (let n of t) {
+            let t = await S(n);
+            if (
+              (function (e) {
+                for (let n of e) {
+                  var t, r;
+                  let e =
+                    U((t = n)) &&
+                    "fulfilled" === t.status &&
+                    U(t.value) &&
+                    U(t.value.originalStackFrame)
+                      ? t.value.originalStackFrame
+                      : null;
+                  if (!e || !0 === e.ignored) continue;
+                  let i = "string" != typeof (r = e.file) ? "" : r.trim();
+                  if (
+                    !(
+                      !i ||
+                      (function (e) {
+                        let t = R(e);
+                        return (
+                          /\/(?:_next\/static|\.next\/dev\/static)\/chunks\//.test(
+                            t,
+                          ) || t.includes("/next/dist/compiled/")
+                        );
+                      })(i)
+                    )
+                  )
+                    return !0;
+                }
+                return !1;
+              })(t.mappedFrames)
+            )
+              return E(e, t.mappedFrames);
+            if (((r = t.mappedFrames), !t.shouldTryNextVariant)) break;
+          }
+          return r ?? k(e, "No stack frames to map.");
+        }
+        async function S(e) {
+          try {
+            let t = (function (e) {
+                try {
+                  return (
+                    new URL(e, window.location.href).origin !==
+                    window.location.origin
+                  );
+                } catch {
+                  return !1;
+                }
+              })(c),
+              r = {
+                body: JSON.stringify({
+                  frames: e,
+                  isServer: !1,
+                  isEdgeServer: !1,
+                  isAppDirectory: l,
+                  sourceOrigin: window.location.origin,
+                }),
+                cache: "no-store",
+                credentials: t ? "omit" : "same-origin",
+                method: "POST",
+                mode: t ? "cors" : "same-origin",
+              };
+            t || (r.headers = { "content-type": "application/json" });
+            let n = await fetch(c, { ...r });
+            if (!n.ok || 204 === n.status) {
+              let t = await n.text().catch(() => "");
+              return {
+                mappedFrames: k(
+                  e,
+                  t || "No original stack frame response from Next dev server.",
+                ),
+                shouldTryNextVariant: !1,
+              };
+            }
+            let i = await n.json();
+            if (!Array.isArray(i))
+              return {
+                mappedFrames: k(
+                  e,
+                  "Invalid original stack frame response from Next dev server.",
+                ),
+                shouldTryNextVariant: !1,
+              };
+            return { mappedFrames: E(e, i), shouldTryNextVariant: !0 };
+          } catch (t) {
+            return {
+              mappedFrames: k(e, t instanceof Error ? t.message : String(t)),
+              shouldTryNextVariant: !1,
+            };
+          }
+        }
+        function E(e, t) {
+          return e.map(
+            (e, r) =>
+              t[r] || {
+                status: "rejected",
+                reason: "No original stack frame response for frame.",
+              },
+          );
+        }
+        function k(e, t) {
+          return e.map(() => ({ status: "rejected", reason: t }));
+        }
+        function $(e, t, r) {
+          let n = JSON.stringify(r.map((e) => e.file));
+          t.has(n) || (t.add(n), e.push(r));
+        }
+        function I(e) {
+          return u ? `${u}/${e.replace(/^\/_next\/static\/?/, "")}` : e;
+        }
+        function O(e) {
+          let t = T(e);
+          return t
+            ? `.next/dev/static/${t.replace(/^\/_next\/static\/?/, "")}`
+            : null;
+        }
+        function A(e) {
+          let t = T(e);
+          return t ? t.replace(/^\/+/, "") : null;
+        }
+        function P(e) {
+          let t = T(e);
+          if (!t) return null;
+          try {
+            return new URL(t, window.location.origin).href;
+          } catch {
+            return null;
+          }
+        }
+        function T(e) {
+          var t, r;
+          let n,
+            i = R(e);
+          if (i.startsWith("/_next/static/")) return i;
+          let a =
+            ((r = "/.next/dev/static/"),
+            -1 === (n = (t = i).indexOf(r)) ? "" : t.slice(n + r.length));
+          return a ? `/_next/static/${a}` : "";
+        }
+        function C(e) {
+          if (e.startsWith("/_next/")) return e;
+          if (e.startsWith("_next/")) return `/${e}`;
+          try {
+            let t = new URL(e);
+            return t.pathname.startsWith("/_next/") ? t.pathname : "";
+          } catch {
+            return "";
+          }
+        }
+        function R(e) {
+          try {
+            return new URL(e).pathname;
+          } catch {}
+          return e.startsWith("/") ? e : `/${e}`;
+        }
+        function N(e) {
+          return e.split("?")[0].split(/[\\/]/).pop() || e;
+        }
+        function U(e) {
+          return "object" == typeof e && null !== e;
+        }
+        function j(e) {
+          let t = e.trim();
+          if (!t.startsWith("at ")) return null;
+          let r = t.slice(3),
+            n = "<anonymous>",
+            i = r,
+            a = r.indexOf("("),
+            o = r.endsWith(")") ? r.length - 1 : -1;
+          -1 !== a &&
+            -1 !== o &&
+            o > a &&
+            ((n = r.slice(0, a).trim() || "<anonymous>"),
+            (i = r.slice(a + 1, o)));
+          let s = /^(.*):(\d+):(\d+)$/.exec(i);
+          return s
+            ? {
+                file: s[1],
+                methodName: n,
+                arguments: [],
+                line1: Number(s[2]),
+                column1: Number(s[3]),
+              }
+            : null;
+        }
+        function D(e) {
+          return "number" == typeof e && Number.isFinite(e) && e > 0
+            ? e
+            : void 0;
+        }
+        (window.addEventListener("error", y),
+          window.addEventListener("unhandledrejection", v),
+          window.addEventListener("message", b),
+          (window[t] = {
+            windowId: p,
+            getSnapshot: () => ({ errors: h.errors.slice() }),
+            reset: g,
+            stop: function () {
+              (window.removeEventListener("error", y),
+                window.removeEventListener("unhandledrejection", v),
+                window.removeEventListener("message", b),
+                delete window[t]);
+            },
+          }),
+          f(a, { existing: !1, href: window.location.href, windowId: p }));
+      })({
+        messageType: "next-dev-bridge:event",
+        sourceMapEndpoint: "/_v0/next-dev-bridge-stack-frames",
+        sourceMapFrameRoot: "file:///vercel/share/v0-project/.next/dev/static",
+      });
+    </script>
+    <style>
+      nextjs-portal {
+        display: none !important;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ============ إعدادات السيو (SEO) ============ -->
+    <title>عيادة بريق للأسنان | أفضل عيادة أسنان وتجميل ابتسامة</title>
+    <meta
+      name="description"
+      content="عيادة بريق لطب وتجميل الأسنان — زراعة، تقويم، تبييض، هوليوود سمايل وعلاج الجذور بأحدث التقنيات الرقمية وأطباء خبراء. احجز موعدك الآن."
+    />
+    <meta
+      name="keywords"
+      content="عيادة أسنان, زراعة الأسنان, تقويم الأسنان, تبييض الأسنان, هوليوود سمايل, طبيب أسنان, تجميل الأسنان, ابتسامة"
+    />
+    <meta name="author" content="عيادة بريق للأسنان" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0d9488" />
+    <link rel="canonical" href="https://bareeq-dental.example" />
+
+    <!-- Open Graph / مشاركة على وسائل التواصل -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta property="og:title" content="عيادة بريق للأسنان | ابتسامة تليق بك" />
+    <meta
+      property="og:description"
+      content="أحدث تقنيات طب وتجميل الأسنان على يد نخبة من الأطباء. احجز موعدك اليوم."
+    />
+    <meta property="og:image" content="/images/hero-clinic.png" />
+    <meta property="og:url" content="https://bareeq-dental.example" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="عيادة بريق للأسنان" />
+    <meta
+      name="twitter:description"
+      content="ابتسامة صحية ومشرقة بأحدث التقنيات."
+    />
+    <meta name="twitter:image" content="/images/hero-clinic.png" />
+
+    <!-- الخطوط -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/styles.css" />
+
+    <!-- ============ البيانات المنظمة (Structured Data) لتحسين ظهورك في جوجل ============ -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Dentist",
+        "name": "عيادة بريق للأسنان",
+        "image": "/images/hero-clinic.png",
+        "description": "عيادة متخصصة في طب وتجميل الأسنان وزراعة الأسنان والتقويم.",
+        "priceRange": "$$",
+        "telephone": "+201000000000",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "شارع التحرير، برج النخيل، الدور الثالث",
+          "addressLocality": "القاهرة",
+          "addressCountry": "EG"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Saturday",
+              "Sunday",
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday"
+            ],
+            "opens": "10:00",
+            "closes": "22:00"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "4.9",
+          "reviewCount": "1280"
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <!-- شريط علوي صغير -->
+    <div class="topbar">
+      <div class="container topbar__inner">
+        <span class="topbar__item">📍 القاهرة — شارع التحرير، برج النخيل</span>
+        <span class="topbar__item topbar__hours"
+          >🕐 مفتوح يوميًا من 10 صباحًا حتى 10 مساءً</span
+        >
+        <a class="topbar__item" href="tel:+201000000000" aria-label="اتصل بنا"
+          >📞 010 000 000 00</a
+        >
+      </div>
+    </div>
+
+    <!-- ============ الترويسة والقائمة ============ -->
+    <header class="header" id="header">
+      <div class="container header__inner">
+        <a href="#hero" class="logo" aria-label="عيادة بريق للأسنان">
+          <span class="logo__mark" aria-hidden="true">
+            <svg
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 5.5c-2-2.5-6-2.5-7.5 0C3 8 4 13 6 17c.8 1.6 1.7 3 2.5 3s1-1.5 1.5-3 .8-2 2-2 1.5.5 2 2 .7 3 1.5 3 1.7-1.4 2.5-3c2-4 3-9 1.5-11.5-1.5-2.5-5.5-2.5-7.5 0Z"
+              />
+            </svg>
+          </span>
+          <span class="logo__text">بريق<small>للأسنان</small></span>
+        </a>
+
+        <nav class="nav" id="nav" aria-label="القائمة الرئيسية">
+          <a href="#services">خدماتنا</a>
+          <a href="#about">من نحن</a>
+          <a href="#tech">التقنيات</a>
+          <a href="#process">مراحل العلاج</a>
+          <a href="#team">فريقنا</a>
+          <a href="#pricing">الأسعار</a>
+          <a href="#faq">الأسئلة</a>
+          <a href="#contact">تواصل</a>
+        </nav>
+
+        <a href="#booking" class="btn btn--primary header__cta">احجز موعدك</a>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="فتح القائمة"
+          aria-expanded="false"
+          aria-controls="nav"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============ القسم الرئيسي (Hero) ============ -->
+      <section class="hero" id="hero">
+        <div class="container hero__inner">
+          <div class="hero__content reveal">
+            <span class="badge">⭐ تقييم 4.9 من أكثر من 1280 مريض</span>
+            <h1>
+              ابتسامتك تستحق <span class="text-accent">أفضل رعاية</span> على
+              الإطلاق
+            </h1>
+            <p class="hero__lead">
+              في عيادة بريق نجمع بين خبرة الأطباء وأحدث التقنيات الرقمية لنمنحك
+              تجربة علاج مريحة وآمنة، وابتسامة مشرقة تدوم مدى الحياة.
+            </p>
+            <div class="hero__actions">
+              <a href="#booking" class="btn btn--primary btn--lg"
+                >احجز استشارتك المجانية</a
+              >
+              <a href="#services" class="btn btn--ghost btn--lg"
+                >تعرّف على خدماتنا</a
+              >
+            </div>
+            <ul class="hero__trust">
+              <li>✔ تعقيم بمعايير عالمية</li>
+              <li>✔ تخطيط رقمي للابتسامة</li>
+              <li>✔ ضمان على العلاج</li>
+            </ul>
+          </div>
+          <div class="hero__media reveal">
+            <img
+              src="/images/hero-clinic.png"
+              alt="مريضة سعيدة داخل عيادة بريق للأسنان الحديثة"
+              width="640"
+              height="720"
+              loading="eager"
+            />
+            <div class="hero__floating hero__floating--1">
+              <strong>+15,000</strong>
+              <span>ابتسامة سعيدة</span>
+            </div>
+            <div class="hero__floating hero__floating--2">
+              <strong>15 عامًا</strong>
+              <span>من الخبرة</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ شريط الإحصائيات ============ -->
+      <section class="stats" aria-label="إنجازاتنا بالأرقام">
+        <div class="container stats__grid">
+          <div class="stat reveal">
+            <strong data-count="15000">0</strong><span>مريض سعيد</span>
+          </div>
+          <div class="stat reveal">
+            <strong data-count="15">0</strong><span>سنة خبرة</span>
+          </div>
+          <div class="stat reveal">
+            <strong data-count="12">0</strong><span>طبيب متخصص</span>
+          </div>
+          <div class="stat reveal">
+            <strong data-count="98">0</strong><span>% نسبة رضا</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ الخدمات ============ -->
+      <section class="section" id="services">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="section__eyebrow">خدماتنا</span>
+            <h2>رعاية متكاملة لكل ما تحتاجه أسنانك</h2>
+            <p>
+              نقدّم مجموعة شاملة من خدمات طب وتجميل الأسنان تحت سقف واحد بأعلى
+              معايير الجودة.
+            </p>
+          </header>
+
+          <div class="cards">
+            <article class="card reveal">
+              <div class="card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 2v20M7 6c0-2 2-3 5-3s5 1 5 3-2 3-5 3-5 1-5 3 2 3 5 3 5 1 5 3"
+                  />
+                </svg>
+              </div>
+              <h3>زراعة الأسنان</h3>
+              <p>
+                تعويض الأسنان المفقودة بزرعات ثابتة تدوم طويلًا وتبدو طبيعية
+                تمامًا.
+              </p>
+            </article>
+            <article class="card reveal">
+              <div class="card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="3" y="9" width="18" height="6" rx="3" />
+                  <path d="M7 9V7M12 9V6M17 9V7" />
+                </svg>
+              </div>
+              <h3>تقويم الأسنان</h3>
+              <p>
+                تقويم معدني وشفاف (Invisalign) لتصحيح اصطفاف الأسنان بأناقة
+                وراحة.
+              </p>
+            </article>
+            <article class="card reveal">
+              <div class="card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 21l-5 -2.9 1-5.5-4-3.9L9.5 8z"
+                  />
+                </svg>
+              </div>
+              <h3>هوليوود سمايل</h3>
+              <p>
+                تصميم ابتسامة مثالية عبر القشور الخزفية (الفينير) لإطلالة
+                النجوم.
+              </p>
+            </article>
+            <article class="card reveal">
+              <div class="card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M8 12h8M12 8v8" />
+                </svg>
+              </div>
+              <h3>تبييض الأسنان</h3>
+              <p>
+                تبييض احترافي بالليزر يمنحك أسنانًا أكثر بياضًا بدرجات في جلسة
+                واحدة.
+              </p>
+            </article>
+            <article class="card reveal">
+              <div class="card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"
+                  />
+                </svg>
+              </div>
+              <h3>علاج الجذور</h3>
+              <p>علاج العصب بدقة عالية وبأقل ألم للحفاظ على سنّك الطبيعي.</p>
+            </article>
+            <article class="card reveal">
+              <div class="card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M12 2a5 5 0 0 0-5 5c0 3 5 8 5 8s5-5 5-8a5 5 0 0 0-5-5z"
+                  />
+                  <path d="M6 20h12" />
+                </svg>
+              </div>
+              <h3>طب أسنان الأطفال</h3>
+              <p>رعاية لطيفة ومرحة تجعل زيارة الطبيب تجربة محببة لطفلك.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ من نحن / لماذا نحن ============ -->
+      <section class="section section--alt" id="about">
+        <div class="container about__inner">
+          <div class="about__media reveal">
+            <img
+              src="/images/about-clinic.png"
+              alt="غرفة علاج مجهزة بأحدث الأجهزة في عيادة بريق"
+              width="620"
+              height="520"
+              loading="lazy"
+            />
+          </div>
+          <div class="about__content reveal">
+            <span class="section__eyebrow">لماذا عيادة بريق؟</span>
+            <h2>نهتم بابتسامتك كما لو كانت ابتسامتنا</h2>
+            <p>
+              منذ 15 عامًا ونحن نضع راحتك وثقتك في المقدمة. نلتزم بأعلى معايير
+              التعقيم العالمية ونستخدم مواد معتمدة عالميًا لضمان نتائج مبهرة
+              وآمنة.
+            </p>
+            <ul class="features">
+              <li>
+                <span aria-hidden="true">✅</span> أطباء متخصصون بخبرة دولية
+              </li>
+              <li>
+                <span aria-hidden="true">✅</span> تخطيط علاج رقمي ثلاثي الأبعاد
+              </li>
+              <li>
+                <span aria-hidden="true">✅</span> بيئة معقّمة ومريحة بالكامل
+              </li>
+              <li>
+                <span aria-hidden="true">✅</span> خطط دفع ميسّرة وأسعار شفافة
+              </li>
+            </ul>
+            <a href="#booking" class="btn btn--primary">ابدأ رحلة علاجك</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ التقنيات ============ -->
+      <section class="section" id="tech">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="section__eyebrow">أحدث التقنيات</span>
+            <h2>تكنولوجيا تصنع الفارق في علاجك</h2>
+            <p>
+              نستثمر في أحدث الأجهزة العالمية لنقدّم لك تشخيصًا أدق وعلاجًا أسرع
+              وأقل ألمًا.
+            </p>
+          </header>
+          <div class="cards cards--3">
+            <article class="tech-card reveal">
+              <h3>أشعة بانوراما رقمية</h3>
+              <p>
+                صور دقيقة للفكين بجرعة إشعاع منخفضة جدًا لتشخيص شامل في ثوانٍ.
+              </p>
+            </article>
+            <article class="tech-card reveal">
+              <h3>ماسح ضوئي ثلاثي الأبعاد</h3>
+              <p>بصمة رقمية للأسنان بدون قوالب تقليدية مزعجة، لنتائج مثالية.</p>
+            </article>
+            <article class="tech-card reveal">
+              <h3>علاج بالليزر</h3>
+              <p>
+                إجراءات دقيقة وشفاء أسرع مع تقليل الألم والنزيف إلى أدنى حد.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ مراحل العلاج ============ -->
+      <section class="section section--alt" id="process">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="section__eyebrow">كيف نعمل</span>
+            <h2>رحلتك معنا في 4 خطوات بسيطة</h2>
+          </header>
+          <ol class="steps">
+            <li class="step reveal">
+              <span class="step__num">1</span>
+              <h3>استشارة وفحص</h3>
+              <p>
+                نستمع إليك ونجري فحصًا شاملًا وأشعة رقمية لتحديد احتياجك بدقة.
+              </p>
+            </li>
+            <li class="step reveal">
+              <span class="step__num">2</span>
+              <h3>خطة علاج مخصصة</h3>
+              <p>نضع خطة واضحة مع التكلفة والمدة قبل بدء أي إجراء.</p>
+            </li>
+            <li class="step reveal">
+              <span class="step__num">3</span>
+              <h3>تنفيذ العلاج</h3>
+              <p>نبدأ العلاج براحة تامة باستخدام أحدث التقنيات والمواد.</p>
+            </li>
+            <li class="step reveal">
+              <span class="step__num">4</span>
+              <h3>متابعة ورعاية</h3>
+              <p>نتابع حالتك بعد العلاج لضمان استمرار ابتسامتك الصحية.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ============ الفريق ============ -->
+      <section class="section" id="team">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="section__eyebrow">فريقنا</span>
+            <h2>نخبة من أمهر أطباء الأسنان</h2>
+            <p>
+              أطباء متخصصون يجمعون بين الخبرة والشغف لتقديم أفضل رعاية ممكنة.
+            </p>
+          </header>
+          <div class="cards cards--3">
+            <article class="doctor reveal">
+              <img
+                src="/images/doctor-1.png"
+                alt="د. أحمد سمير أخصائي زراعة الأسنان"
+                width="360"
+                height="360"
+                loading="lazy"
+              />
+              <div class="doctor__body">
+                <h3>د. أحمد سمير</h3>
+                <p class="doctor__role">استشاري زراعة الأسنان</p>
+              </div>
+            </article>
+            <article class="doctor reveal">
+              <img
+                src="/images/doctor-2.png"
+                alt="د. منى خالد أخصائية تقويم الأسنان"
+                width="360"
+                height="360"
+                loading="lazy"
+              />
+              <div class="doctor__body">
+                <h3>د. منى خالد</h3>
+                <p class="doctor__role">أخصائية التقويم والتجميل</p>
+              </div>
+            </article>
+            <article class="doctor reveal">
+              <img
+                src="/images/doctor-3.png"
+                alt="د. يوسف حسن أخصائي علاج الجذور"
+                width="360"
+                height="360"
+                loading="lazy"
+              />
+              <div class="doctor__body">
+                <h3>د. يوسف حسن</h3>
+                <p class="doctor__role">أخصائي علاج الجذور</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ آراء العملاء ============ -->
+      <section class="section section--alt" id="testimonials">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="section__eyebrow">آراء مرضانا</span>
+            <h2>قصص ابتسامات سعيدة</h2>
+          </header>
+          <div class="testimonials" id="testimonials">
+            <div class="testi-track" id="testiTrack">
+              <blockquote class="testi">
+                <p>
+                  "تجربة رائعة من أول لحظة! الطاقم محترف والدكتور شرح لي كل
+                  خطوة. نتيجة زراعة الأسنان فاقت توقعاتي."
+                </p>
+                <footer>
+                  <strong>سارة عبد الله</strong><span>زراعة أسنان</span
+                  ><span class="testi__stars" aria-label="5 نجوم">★★★★★</span>
+                </footer>
+              </blockquote>
+              <blockquote class="testi">
+                <p>
+                  "عملت هوليوود سمايل وبقت ابتسامتي حلم! مكان نظيف ومريح
+                  والأسعار واضحة من البداية."
+                </p>
+                <footer>
+                  <strong>محمد فتحي</strong><span>هوليوود سمايل</span
+                  ><span class="testi__stars" aria-label="5 نجوم">★★★★★</span>
+                </footer>
+              </blockquote>
+              <blockquote class="testi">
+                <p>
+                  "ابني كان خايف من دكتور الأسنان، بس التعامل اللطيف خلاه يحب
+                  الزيارة. شكرًا لكل الفريق."
+                </p>
+                <footer>
+                  <strong>هالة إبراهيم</strong><span>طب أسنان الأطفال</span
+                  ><span class="testi__stars" aria-label="5 نجوم">★★★★★</span>
+                </footer>
+              </blockquote>
+            </div>
+            <div
+              class="testi-dots"
+              id="testiDots"
+              role="tablist"
+              aria-label="التنقل بين الآراء"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ الأسعار / الباقات ============ -->
+      <section class="section" id="pricing">
+        <div class="container">
+          <header class="section__head reveal">
+            <span class="section__eyebrow">أسعار شفافة</span>
+            <h2>باقات تناسب كل احتياج</h2>
+            <p>أسعار واضحة بدون مفاجآت، مع خطط تقسيط مريحة.</p>
+          </header>
+          <div class="cards cards--3 pricing">
+            <article class="plan reveal">
+              <h3>الفحص والتنظيف</h3>
+              <p class="plan__price">
+                <span>يبدأ من</span> 250 <small>ج.م</small>
+              </p>
+              <ul>
+                <li>فحص شامل للأسنان</li>
+                <li>تنظيف وإزالة الجير</li>
+                <li>استشارة ونصائح وقائية</li>
+              </ul>
+              <a href="#booking" class="btn btn--ghost">احجز الآن</a>
+            </article>
+            <article class="plan plan--featured reveal">
+              <span class="plan__tag">الأكثر طلبًا</span>
+              <h3>تبييض بالليزر</h3>
+              <p class="plan__price">
+                <span>يبدأ من</span> 1,500 <small>ج.م</small>
+              </p>
+              <ul>
+                <li>جلسة تبييض احترافية</li>
+                <li>نتائج فورية تدوم</li>
+                <li>حماية اللثة أثناء الجلسة</li>
+                <li>متابعة بعد الجلسة</li>
+              </ul>
+              <a href="#booking" class="btn btn--primary">احجز الآن</a>
+            </article>
+            <article class="plan reveal">
+              <h3>زراعة سن</h3>
+              <p class="plan__price">
+                <span>يبدأ من</span> 6,000 <small>ج.م</small>
+              </p>
+              <ul>
+                <li>زرعة عالمية معتمدة</li>
+                <li>تركيبة خزفية طبيعية</li>
+                <li>ضمان على الزرعة</li>
+              </ul>
+              <a href="#booking" class="btn btn--ghost">احجز الآن</a>
+            </article>
+          </div>
+          <p class="pricing__note">
+            * الأسعار استرشادية وقد تختلف حسب الحالة بعد الفحص.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============ الأسئلة الشائعة ============ -->
+      <section class="section section--alt" id="faq">
+        <div class="container faq__inner">
+          <header class="section__head section__head--start reveal">
+            <span class="section__eyebrow">الأسئلة الشائعة</span>
+            <h2>إجابات لأكثر ما يشغل بالك</h2>
+          </header>
+          <div class="faq" id="faq">
+            <details class="faq__item reveal">
+              <summary>هل جلسات العلاج مؤلمة؟</summary>
+              <p>
+                نحرص على راحتك التامة باستخدام تقنيات التخدير الحديثة والليزر
+                لتقليل الألم إلى أدنى حد ممكن.
+              </p>
+            </details>
+            <details class="faq__item reveal">
+              <summary>كم تستغرق عملية زراعة الأسنان؟</summary>
+              <p>
+                تختلف حسب الحالة، لكن غالبًا تتم الزراعة في جلسة قصيرة، ويحتاج
+                الالتحام العظمي من 3 إلى 6 أشهر قبل التركيب النهائي.
+              </p>
+            </details>
+            <details class="faq__item reveal">
+              <summary>هل توفرون خطط تقسيط؟</summary>
+              <p>
+                نعم، نوفر خطط دفع ميسّرة تناسب مختلف الميزانيات، ويمكن مناقشتها
+                مع فريق الاستقبال.
+              </p>
+            </details>
+            <details class="faq__item reveal">
+              <summary>هل الاستشارة الأولى مجانية؟</summary>
+              <p>
+                نعم، نقدّم استشارة أولية مجانية تشمل الفحص المبدئي ووضع تصور عام
+                لخطة العلاج.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ الحجز ============ -->
+      <section class="section booking" id="booking">
+        <div class="container booking__inner">
+          <div class="booking__content reveal">
+            <span class="section__eyebrow section__eyebrow--light"
+              >احجز موعدك</span
+            >
+            <h2>ابدأ رحلتك نحو ابتسامة مثالية</h2>
+            <p>
+              املأ النموذج وسيتواصل معك فريقنا لتأكيد الموعد في أقرب وقت.
+              استشارتك الأولى علينا!
+            </p>
+            <ul class="booking__points">
+              <li>📞 010 000 000 00</li>
+              <li>✉️ info@bareeq-dental.example</li>
+              <li>📍 القاهرة — شارع التحرير، برج النخيل، الدور الثالث</li>
+            </ul>
+          </div>
+          <form class="booking__form reveal" id="bookingForm" novalidate>
+            <div class="field">
+              <label for="name">الاسم بالكامل</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="اكتب اسمك"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="phone">رقم الهاتف</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="01xxxxxxxxx"
+                required
+                pattern="[0-9]{8,15}"
+              />
+            </div>
+            <div class="field">
+              <label for="service">الخدمة المطلوبة</label>
+              <select id="service" name="service" required>
+                <option value="" disabled selected>اختر الخدمة</option>
+                <option>كشف واستشارة</option>
+                <option>زراعة الأسنان</option>
+                <option>تقويم الأسنان</option>
+                <option>هوليوود سمايل</option>
+                <option>تبييض الأسنان</option>
+                <option>علاج الجذور</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="date">التاريخ المفضّل</label>
+              <input type="date" id="date" name="date" />
+            </div>
+            <div class="field field--full">
+              <label for="message">ملاحظات (اختياري)</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="3"
+                placeholder="أخبرنا بأي تفاصيل تهمك"
+              ></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg field--full">
+              تأكيد الحجز
+            </button>
+            <p class="form__success" id="formSuccess" role="status" hidden>
+              ✅ تم استلام طلبك بنجاح، سنتواصل معك قريبًا!
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ التذييل ============ -->
+    <footer class="footer" id="contact">
+      <div class="container footer__grid">
+        <div class="footer__col">
+          <a href="#hero" class="logo logo--light">
+            <span class="logo__mark" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M12 5.5c-2-2.5-6-2.5-7.5 0C3 8 4 13 6 17c.8 1.6 1.7 3 2.5 3s1-1.5 1.5-3 .8-2 2-2 1.5.5 2 2 .7 3 1.5 3 1.7-1.4 2.5-3c2-4 3-9 1.5-11.5-1.5-2.5-5.5-2.5-7.5 0Z"
+                />
+              </svg>
+            </span>
+            <span class="logo__text">بريق<small>للأسنان</small></span>
+          </a>
+          <p>
+            عيادة متخصصة في طب وتجميل الأسنان، نمنحك ابتسامة صحية ومشرقة بأحدث
+            التقنيات وأمهر الأطباء.
+          </p>
+        </div>
+        <div class="footer__col">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="#services">خدماتنا</a></li>
+            <li><a href="#about">من نحن</a></li>
+            <li><a href="#team">فريقنا</a></li>
+            <li><a href="#pricing">الأسعار</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>تواصل معنا</h4>
+          <ul>
+            <li><a href="tel:+201140286051" dir="ltr">01140286051 📞</a></li>
+            <li>
+              <a href="mailto:info@bareeq-dental.example"
+                >✉️ info@bareeq-dental.example</a
+              >
+            </li>
+            <li>📍 القاهرة — شارع التحرير</li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>مواعيد العمل</h4>
+          <ul>
+            <li>السبت - الخميس: 10ص - 10م</li>
+            <li>الجمعة: 2م - 10م</li>
+          </ul>
+          <div class="social" aria-label="وسائل التواصل الاجتماعي">
+            <a href="#" aria-label="فيسبوك">Facebook</a>
+            <a href="#" aria-label="إنستجرام">Instagram</a>
+            <a href="#" aria-label="واتساب">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="container">
+          <p>
+            © <span id="year"></span> عيادة بريق للأسنان. جميع الحقوق محفوظة.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- زر واتساب عائم -->
+    <a
+      href="https://wa.me/201140286051?text=مرحبًا، أود حجز استشارة في عيادة بريق للأسنان."
+      class="whatsapp-fab"
+      aria-label="تواصل عبر واتساب"
+      target="_blank"
+      rel="noopener"
+    >
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+        <path
+          d="M17.5 14.4c-.3-.2-1.7-.8-2-.9-.3-.1-.5-.2-.7.1s-.8.9-1 1.1c-.2.2-.4.2-.7.1-1.7-.9-2.8-1.6-4-3.5-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"
+        />
+        <path
+          d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20z"
+        />
+      </svg>
+    </a>
+
+    <script src="/script.js" defer></script>
+  </body>
+</html>
