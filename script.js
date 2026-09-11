@@ -174,33 +174,101 @@
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 })();
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+document.addEventListener('DOMContentLoaded', function () {
 
-  const phoneNumber = "201140286051"; // اكتب رقمك هنا
+    const form = document.getElementById('bookingForm');
+    const status = document.getElementById('form-status');
 
-  const name = document.getElementById('name').value;
-  const phone = document.getElementById('phone').value;
-  const service = document.getElementById('service').value;
-  const notes = document.getElementById('message').value;
+    if (!form) return;
 
-  // المصفوفة مع الإيموجيز
-  const messageLines = [
-    `📌 *طلب حجز جديد* 📌`,
-    ``,
-    `👤 *الاسم:* ${name}`,
-    `📞 *رقم الهاتف:* ${phone}`,
-    `🛠️ *الخدمة المطلوبة:* ${service}`,
-    `📝 *الملاحظات:* ${notes || 'لا يوجد'}`
-  ];
+    form.addEventListener('submit', function (e) {
+        // 1. إيقاف الإرسال الافتراضي
+        e.preventDefault();
 
-  // تشفير كل سطر والربط بـ %0A للسطر الجديد
-  const fullText = messageLines
-    .map(line => encodeURIComponent(line))
-    .join('%0A');
+        // 2. جلب البيانات وتنظيف المسافات
+        const name = form.name ? form.name.value.trim() : "";
+        const phone = form.phone ? form.phone.value.trim() : "";
+        const serviceSelect = form.service;
+        const serviceValue = serviceSelect ? serviceSelect.value.trim() : "";
+        const serviceText = serviceSelect && serviceSelect.selectedIndex !== -1 
+                            ? serviceSelect.options[serviceSelect.selectedIndex].text 
+                            : "";
+        const notes = form.notes ? form.notes.value.trim() : "";
 
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${fullText}`;
-  
-  window.open(whatsappUrl, '_blank');
-  this.reset();
+        const phonePattern = /^[0-9+\s-]{8,15}$/;
+
+        // 3. التحقق من الحقول المطلوبة (يمنع الانتقال للواتساب إذا كانت فارغة)
+        if (!name || !phone || !serviceValue) {
+            if (status) {
+                status.textContent = 'الرجاء تعبئة الاسم والجوال والخدمة المطلوبة';
+                status.dataset.state = 'error';
+            }
+            return; // ⛔ توقف الكود هنا لأن البيانات فارغة
+        }
+
+        // 4. التحقق من صحة رقم الهاتف
+        if (!phonePattern.test(phone)) {
+            if (status) {
+                status.textContent = 'الرجاء إدخال رقم جوال صحيح';
+                status.dataset.state = 'error';
+            }
+            return; // ⛔ توقف الكود هنا بسبب رقم الهاتف
+        }
+
+        // 5. رقم الواتساب بالصيغة الدولية (اكتبي رقمك بدون +)
+        const myWhatsappNumber = "201123456789"; 
+
+        // 6. تجهيز نص الرسالة
+        const messageLines = [
+            "📌 *طلب حجز جديد* 📌",
+            "",
+            `👤 *الاسم:* ${name}`,
+            `📞 *رقم الهاتف:* ${phone}`,
+            `🛠️ *الخدمة المطلوبة:* ${serviceText}`,
+            `📝 *الملاحظات:* ${notes || "لا يوجد"}`
+        ];
+
+        const fullMessage = messageLines.join('\n');
+        const whatsappUrl = `https://wa.me/${myWhatsappNumber}?text=${encodeURIComponent(fullMessage)}`;
+
+        // 7. إظهار رسالة النجاح وتفريغ الحقول
+        if (status) {
+            status.textContent = `شكراً لك يا ${name}، جاري تحويلك إلى واتساب...`;
+            status.dataset.state = 'success';
+        }
+
+        form.reset();
+
+        // 8. الانتقال المباشر للواتساب
+        window.location.href = whatsappUrl;
+    });
+
+});document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('bookingForm');
+
+    if (!form) {
+        alert("لم يتم العثور على bookingForm في الـ HTML!");
+        return;
+    }
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = form.name ? form.name.value.trim() : "";
+        const phone = form.phone ? form.phone.value.trim() : "";
+        const serviceSelect = form.service;
+        const service = serviceSelect && serviceSelect.selectedIndex !== -1 
+                        ? serviceSelect.options[serviceSelect.selectedIndex].text 
+                        : "";
+        const notes = form.notes ? form.notes.value.trim() : "";
+
+        const myWhatsappNumber = "201123456789"; // اكتب رقمك الحقيقي بدون +
+
+        const message = `📌 *طلب حجز جديد*\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n🛠️ الخدمة: ${service}\n📝 الملاحظات: ${notes || "لا يوجد"}`;
+
+        const whatsappUrl = `https://wa.me/${myWhatsappNumber}?text=${encodeURIComponent(message)}`;
+
+        // فتح الواتساب مباشرة
+        window.location.href = whatsappUrl;
+    });
 });
