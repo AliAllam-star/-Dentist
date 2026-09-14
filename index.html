@@ -492,15 +492,20 @@
     <meta name="twitter:image" content="/images/hero-clinic.png" />
 
     <!-- الخطوط -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Tajawal:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
+<!-- 1. تجهيز الاتصال بسيرفرات جوجل سريعا -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link rel="stylesheet" href="style.css" />
+<!-- 2. استدعاء الخطوط بدون تعطيل الشاشة (media=print) -->
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Tajawal:wght@400;700&display=swap"
+  media="print"
+  onload="this.media='all'"
+/>
 
+<!-- 3. استدعاء ملف الـ CSS الأساسي بتاعك عادي جدا -->
+<link rel="stylesheet" href="style.css" />
     <!-- ============ البيانات المنظمة (Structured Data) لتحسين ظهورك في جوجل ============ -->
     <script type="application/ld+json">
       {
@@ -542,19 +547,6 @@
   </head>
 
   <body>
-    <!-- شريط علوي صغير -->
-    <div class="topbar">
-      <div class="container topbar__inner">
-        <span class="topbar__item">📍 القاهرة — شارع التحرير، برج النخيل</span>
-        <span class="topbar__item topbar__hours"
-          >🕐 مفتوح يوميًا من 10 صباحًا حتى 10 مساءً</span
-        >
-        <a class="topbar__item" href="tel:+201000000000" aria-label="اتصل بنا"
-          >📞 010 000 000 00</a
-        >
-      </div>
-    </div>
-
     <!-- ============ الترويسة والقائمة ============ -->
     <header class="header" id="header">
       <div class="container header__inner">
@@ -633,7 +625,7 @@
           </div>
           <div class="hero__media reveal">
             <img
-              src="/images/hero-clinic.png"
+              src="hero-clinic.jpg"
               alt="مريضة سعيدة داخل عيادة بريق للأسنان الحديثة"
               width="640"
               height="720"
@@ -810,7 +802,7 @@
         <div class="container about__inner">
           <div class="about__media reveal">
             <img
-              src="/images/about-clinic.png"
+              src="about-clinic.png"
               alt="غرفة علاج مجهزة بأحدث الأجهزة في عيادة بريق"
               width="620"
               height="520"
@@ -923,7 +915,7 @@
           <div class="cards cards--3">
             <article class="doctor reveal">
               <img
-                src="/images/doctor-1.png"
+                src="doctor-1.jpg"
                 alt="د. أحمد سمير أخصائي زراعة الأسنان"
                 width="360"
                 height="360"
@@ -936,7 +928,7 @@
             </article>
             <article class="doctor reveal">
               <img
-                src="/images/doctor-2.png"
+                src="doctor-2.jpg"
                 alt="د. منى خالد أخصائية تقويم الأسنان"
                 width="360"
                 height="360"
@@ -949,7 +941,7 @@
             </article>
             <article class="doctor reveal">
               <img
-                src="/images/doctor-3.png"
+                src="doctor-3.jpg"
                 alt="د. يوسف حسن أخصائي علاج الجذور"
                 width="360"
                 height="360"
@@ -1152,12 +1144,12 @@
               <label for="service">الخدمة المطلوبة</label>
               <select id="service" name="service" required>
                 <option value="" disabled selected>اختر الخدمة</option>
-                <option>كشف واستشارة</option>
-                <option>زراعة الأسنان</option>
-                <option>تقويم الأسنان</option>
-                <option>هوليوود سمايل</option>
-                <option>تبييض الأسنان</option>
-                <option>علاج الجذور</option>
+                <option value="كشف واستشارة">كشف واستشارة</option>
+                <option value="زراعة الأسنان">زراعة الأسنان</option>
+                <option value="تقويم الأسنان">تقويم الأسنان</option>
+                <option value="هوليوود سمايل">هوليوود سمايل</option>
+                <option value="تبييض الأسنان">تبييض الأسنان</option>
+                <option value="علاج الجذور ">علاج الجذور</option>
               </select>
             </div>
             <div class="field">
