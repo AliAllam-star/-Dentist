@@ -180,18 +180,7 @@
       }
 
       var notes = (messageEl && messageEl.value.trim() !== "") ? messageEl.value.trim() : "لا يوجد";
-
-      // 2. تجهيز نص الرسالة
-      // var messageLines = [
-      //   " *طلب حجز جديد* 📌",
-      //   "",
-      //   "👤 *الاسم:* " + name,
-      //   "📞 *رقم الهاتف:* " + phone,
-      //   "🛠️ *الخدمة المطلوبة:* " + serviceText,
-      //   "📅 *التاريخ المفضل:* " + (date || 'غير محدد'),
-      //   "📝 *الملاحظات:* " + notes
-      // ];
-
+      
     var messageLines = [
     `*طلب حجز جديد* 📌`,
     ``,
@@ -232,3 +221,105 @@
   }
 
 })(); // إغلاق دالة الـ IIFE المفقودة
+document.addEventListener("DOMContentLoaded", () => {
+  const sliders = document.querySelectorAll("[data-ba-slider]");
+
+  sliders.forEach((slider) => {
+    const range = slider.querySelector("[data-ba-range]");
+    const afterImgWrapper = slider.querySelector("[data-ba-after]");
+    const afterImg = afterImgWrapper.querySelector(".ba-img--after");
+    const divider = slider.querySelector("[data-ba-divider]");
+
+    const updateSlider = (value) => {
+      // تحديث عرض الطبقة والفاصل بناءً على نسبة الشريط
+      afterImgWrapper.style.width = `${value}%`;
+      divider.style.right = `${value}%`;
+
+      // اضبط عرض الصورة العلوية لتطابق عرض الكارت الأصلي لعدم مطها
+      const sliderWidth = slider.offsetWidth;
+      afterImg.style.width = `${sliderWidth}px`;
+    };
+
+    range.addEventListener("input", (e) => {
+      updateSlider(e.target.value);
+    });
+
+    // إعادة الضبط عند تغيير حجم الشاشة
+    window.addEventListener("resize", () => {
+      updateSlider(range.value);
+    });
+
+    updateSlider(50);
+  });
+});
+// نصوص المقالات الكاملة
+const articlesData = {
+  "article-1": {
+    title: "دليلك الشامل لزراعة الأسنان: الأهمية والخطوات",
+    content: `
+      <p>تعتبر زراعة الأسنان الخيار الخيار الأمثل والأنسب لتعويض الأسنان المفقودة، حيث تعيد للفك قدرته الطبيعية على المضغ والكلام دون التأثير على الأسنان المجاورة.</p>
+      <h4>ما هي زراعة الأسنان؟</h4>
+      <p>هي عملية تثبيت جذر اصطناعي مصنوع من مادة التيتانيوم الآمنة داخل عظم الفك، يلتحم مع العظم ليصبح قاعدة قوية لتركيب السن الجديد.</p>
+      <h4>أهمية زراعة الأسنان:</h4>
+      <p>• حماية عظام الفك من الضمور والآتكل بعد فقدان السن.<br>
+      • الحفاظ على المظهر الطبيعي واستعادة الثقة بالنفس.<br>
+      • منع تحرك الأسنان المجاورة من مكانها الصحيح.</p>
+      <h4>ما الذي يحجم المرضى عن الزراعة؟</h4>
+      <p>الخوف من الألم أو الاعتقاد بأن التكلفة مرتفعة، ولكن مع التخدير الرقمي والتقنيات الحديثة أصبحت العملية بدون ألم ونسبة نجاحها تتجاوز 98%.</p>
+    `
+  },
+  "article-2": {
+    title: "متى تحتاج لتقويم الأسنان؟ وما هي أنواعه؟",
+    content: `
+      <p>تقويم الأسنان ليس مجرد إجراء جمالي، بل هو خطوة علاجية أساسية لتعديل اصطفاف الأسنان وتحسين أداء الفكين.</p>
+      <h4>فوائد وأهمية التقويم:</h4>
+      <p>• تحسين عملية مضغ الطعام وتخفيف العبء على الجهاز الهضمي.<br>
+      • تسهيل تنظيف الأسنان وتقليل فرص حدوث التسوس وأمراض اللثة.<br>
+      • معالجة مشاكل النطق والتأتأة الناتجة عن عدم انتظام الأسنان.</p>
+      <h4>أنواع التقويم المتاحة:</h4>
+      <p><strong>1. التقويم المعدني:</strong> الأكثر شيوعاً وفاعلية للحالات المركبة.<br>
+      <strong>2. التقويم الشفاف (Invisalign):</strong> قالب شفاف قابل للإزالة ومخفي تماماً أثناء الابتسامة.</p>
+    `
+  },
+  "article-3": {
+    title: "ابتسامة هوليوود: بين الحقيقة والتجميل العصري",
+    content: `
+      <p>ابتسامة هوليوود هي إجراء تجميلي يهدف إلى تغطية عيوب الأسنان الخارجية عبر قشور خزفية رقيقة (الفينير) توضع على السطح الخارجي للسن.</p>
+      <h4>متى تحتاج لابتسامة هوليوود؟</h4>
+      <p>• وجود تصبغات دائمة لا تزول بالتبييض التقليدي.<br>
+      • وجود كسور بسيطة أو شقوق في الأسنان الأمامية.<br>
+      • وجود فراغات بين الأسنان ترغب في إخفائها سريعاً.</p>
+      <h4>أهمية العناية بعد الإجراء:</h4>
+      <p>تستمر نتائج الفينير لأكثر من 10 إلى 15 سنة عند الالتزام بالتنظيف اليومي وزيارة الطبيب بشكل دوري للحفاظ على بريقها.</p>
+    `
+  }
+};
+
+// تشغيل النافذة المنبثقة للـ Modal
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("articleModal");
+  const modalBody = document.getElementById("modalBody");
+  const modalClose = document.getElementById("modalClose");
+  const modalOverlay = document.getElementById("modalOverlay");
+
+  document.querySelectorAll(".btn-read-more").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const articleKey = btn.getAttribute("data-article");
+      const article = articlesData[articleKey];
+
+      if (article) {
+        modalBody.innerHTML = `<h2>${article.title}</h2>${article.content}`;
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+    });
+  });
+
+  const closeModal = () => {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+  };
+
+  modalClose.addEventListener("click", closeModal);
+  modalOverlay.addEventListener("click", closeModal);
+});
